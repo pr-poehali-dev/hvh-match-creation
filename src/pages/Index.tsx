@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import Icon from '@/components/ui/icon';
+import { useNavigate } from 'react-router-dom';
 
 interface Match {
   id: number;
@@ -25,6 +26,7 @@ interface Message {
 }
 
 const Index = () => {
+  const navigate = useNavigate();
   const [shoutboxMessage, setShoutboxMessage] = useState('');
 
   const liveMatches: Match[] = [
@@ -150,7 +152,11 @@ const Index = () => {
             </div>
             <div className="p-4 space-y-4">
               {liveMatches.map((match) => (
-                <Card key={match.id} className="bg-secondary border-border/50 p-4 hover:border-primary/50 transition-colors cursor-pointer">
+                <Card 
+                  key={match.id} 
+                  onClick={() => navigate(`/match/${match.id}`)}
+                  className="bg-secondary border-border/50 p-4 hover:border-primary/50 transition-colors cursor-pointer"
+                >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
                       <Icon name="Crosshair" size={20} className="text-muted-foreground" />

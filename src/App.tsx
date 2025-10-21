@@ -10,6 +10,7 @@ import Rankings from "./pages/Rankings";
 import Tournaments from "./pages/Tournaments";
 import Profile from "./pages/Profile";
 import Rules from "./pages/Rules";
+import MatchDetails from "./pages/MatchDetails";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/tournaments" element={<Tournaments />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/rules" element={<Rules />} />
+            <Route path="/match/:id" element={<MatchDetails />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
