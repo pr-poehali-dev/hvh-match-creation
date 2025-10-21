@@ -1,7 +1,8 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { useNavigate, useLocation } from 'react-router-dom';
+import FindMatchModal from '@/components/FindMatchModal';
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,6 +11,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [showFindMatch, setShowFindMatch] = useState(false);
 
   const navItems = [
     { name: 'Home', path: '/', icon: 'Home' },
@@ -52,6 +54,14 @@ const Layout = ({ children }: LayoutProps) => {
             </nav>
 
             <div className="flex items-center gap-2">
+              <Button 
+                size="sm" 
+                className="bg-green-600 hover:bg-green-700 text-white animate-pulse"
+                onClick={() => setShowFindMatch(true)}
+              >
+                <Icon name="Crosshair" size={16} className="mr-2" />
+                Find Match
+              </Button>
               <Button variant="outline" size="sm">
                 <Icon name="LogIn" size={16} className="mr-2" />
                 Login
@@ -119,6 +129,8 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
         </div>
       </footer>
+
+      <FindMatchModal open={showFindMatch} onOpenChange={setShowFindMatch} />
     </div>
   );
 };
