@@ -53,30 +53,35 @@ const Index = () => {
 
   return (
     <div>
-      <div className="bg-green-500/10 border border-green-500/30 rounded-md px-4 py-2 mb-6 flex items-center gap-2">
-        <Icon name="CheckCircle" className="text-green-500" size={20} />
-        <span className="text-green-500 text-sm font-medium">CS2 queues are available again</span>
+      <div className="bg-gradient-to-r from-green-500/20 via-green-500/10 to-green-500/20 border border-green-500/40 rounded-lg px-4 py-3 mb-6 flex items-center gap-2 glow animate-pulse backdrop-blur-sm">
+        <Icon name="CheckCircle" className="text-green-400" size={20} />
+        <span className="text-green-400 text-sm font-bold">CS2 queues are available again</span>
       </div>
 
-      <Card className="bg-gradient-to-r from-primary/20 to-secondary/20 border-primary/30 p-6 mb-6">
-        <div className="flex items-center justify-between">
+      <Card className="relative overflow-hidden bg-gradient-to-br from-primary/30 via-orange-500/20 to-red-500/20 border-primary/50 p-8 mb-6 glow-strong">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent animate-pulse"></div>
+        <div className="relative flex items-center justify-between">
           <div>
-            <h2 className="text-3xl font-bold mb-2">
-              unmatched.<span className="text-primary">power</span>
+            <h2 className="text-4xl font-black mb-2 text-glow">
+              unmatched.<span className="text-primary animate-pulse">power</span>
             </h2>
-            <p className="text-muted-foreground">Enhance your experience with powerful new features.</p>
+            <p className="text-foreground/90 font-medium">Enhance your experience with powerful new features.</p>
           </div>
-          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-            CLICK TO JOIN THE DISCORD
+          <Button size="lg" className="bg-gradient-to-r from-primary to-orange-500 text-black font-bold hover:scale-105 transition-transform glow">
+            <Icon name="MessageCircle" size={20} className="mr-2" />
+            JOIN THE DISCORD
           </Button>
         </div>
       </Card>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <Card className="bg-card border-border/50">
-            <div className="border-b border-border/50 p-4">
-              <h3 className="text-xl font-bold">Shoutbox</h3>
+          <Card className="bg-card/80 backdrop-blur-sm border-border/50 card-hover overflow-hidden">
+            <div className="border-b border-primary/20 bg-gradient-to-r from-primary/10 to-transparent p-4">
+              <h3 className="text-xl font-bold flex items-center gap-2">
+                <Icon name="MessageSquare" className="text-primary" size={24} />
+                Shoutbox
+              </h3>
             </div>
             <div className="p-4">
               <ScrollArea className="h-[400px] pr-4">
@@ -120,9 +125,12 @@ const Index = () => {
         </div>
 
         <div className="space-y-6">
-          <Card className="bg-card border-border/50">
-            <div className="border-b border-border/50 p-4">
-              <h3 className="text-lg font-bold">Users online (144)</h3>
+          <Card className="bg-card/80 backdrop-blur-sm border-border/50 card-hover overflow-hidden">
+            <div className="border-b border-green-500/20 bg-gradient-to-r from-green-500/10 to-transparent p-4">
+              <h3 className="text-lg font-bold flex items-center gap-2">
+                <Icon name="Users" className="text-green-500" size={20} />
+                Users online (144)
+              </h3>
             </div>
             <div className="p-4">
               <ScrollArea className="h-[200px]">
@@ -141,12 +149,14 @@ const Index = () => {
             </div>
           </Card>
 
-          <Card className="bg-card border-border/50">
-            <div className="flex border-b border-border/50">
-              <button className="flex-1 p-3 text-sm font-medium hover:bg-muted/50">
+          <Card className="bg-card/80 backdrop-blur-sm border-border/50 card-hover overflow-hidden">
+            <div className="flex border-b border-border/50 bg-gradient-to-r from-red-500/10 to-transparent">
+              <button className="flex-1 p-3 text-sm font-medium hover:bg-muted/50 transition-colors">
+                <Icon name="Video" size={14} className="inline mr-1" />
                 Live Streams (0)
               </button>
-              <button className="flex-1 p-3 text-sm font-medium bg-primary text-primary-foreground">
+              <button className="flex-1 p-3 text-sm font-bold bg-gradient-to-r from-red-600 to-red-500 text-white glow">
+                <Icon name="Radio" size={14} className="inline mr-1 animate-pulse" />
                 Live Matches (9)
               </button>
             </div>
@@ -155,14 +165,18 @@ const Index = () => {
                 <Card 
                   key={match.id} 
                   onClick={() => navigate(`/match/${match.id}`)}
-                  className="bg-secondary border-border/50 p-4 hover:border-primary/50 transition-colors cursor-pointer"
+                  className="relative overflow-hidden bg-gradient-to-br from-secondary to-secondary/50 border-2 border-red-500/30 p-4 hover:border-red-500 hover:scale-105 transition-all cursor-pointer glow"
                 >
-                  <div className="flex items-center justify-between mb-3">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl"></div>
+                  <div className="relative flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <Icon name="Crosshair" size={20} className="text-muted-foreground" />
-                      <Icon name="Users" size={20} className="text-muted-foreground" />
+                      <Icon name="Crosshair" size={20} className="text-red-500 animate-pulse" />
+                      <Icon name="Users" size={20} className="text-primary" />
                     </div>
-                    <Badge className="bg-primary text-primary-foreground">LIVE</Badge>
+                    <Badge className="bg-gradient-to-r from-red-600 to-red-500 text-white font-bold animate-pulse glow">
+                      <Icon name="Radio" size={12} className="inline mr-1" />
+                      LIVE
+                    </Badge>
                   </div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-bold text-lg">{match.team1}</span>
