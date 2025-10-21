@@ -25,7 +25,6 @@ interface Message {
 }
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState('home');
   const [shoutboxMessage, setShoutboxMessage] = useState('');
 
   const liveMatches: Match[] = [
@@ -51,54 +50,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border/50 bg-card">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-4">
-            <div className="flex items-center gap-2">
-              <Icon name="Crosshair" className="text-primary" size={32} />
-              <div>
-                <h1 className="text-2xl font-bold text-primary">unmatched.gg</h1>
-                <p className="text-xs text-muted-foreground">The way CS was meant to be played</p>
-              </div>
-            </div>
-
-            <nav className="hidden md:flex items-center gap-1">
-              {[
-                { name: 'Home', icon: 'Home' },
-                { name: 'News', icon: 'Newspaper' },
-                { name: 'Play', icon: 'Gamepad2' },
-                { name: 'Rankings', icon: 'Trophy' },
-                { name: 'Tournaments', icon: 'Award' },
-                { name: 'Wager', icon: 'DollarSign' },
-              ].map((item) => (
-                <Button
-                  key={item.name}
-                  variant={activeTab === item.name.toLowerCase() ? 'default' : 'ghost'}
-                  onClick={() => setActiveTab(item.name.toLowerCase())}
-                  className={activeTab === item.name.toLowerCase() ? 'bg-primary text-primary-foreground' : ''}
-                >
-                  <Icon name={item.icon as any} size={16} className="mr-2" />
-                  {item.name}
-                </Button>
-              ))}
-            </nav>
-
-            <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm">
-                <Icon name="LogIn" size={16} className="mr-2" />
-                Login
-              </Button>
-              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                <Icon name="UserPlus" size={16} className="mr-2" />
-                Sign Up
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="container mx-auto px-4 py-6">
+    <div>
         <div className="bg-green-500/10 border border-green-500/30 rounded-md px-4 py-2 mb-6 flex items-center gap-2">
           <Icon name="CheckCircle" className="text-green-500" size={20} />
           <span className="text-green-500 text-sm font-medium">CS2 queues are available again</span>
@@ -245,37 +197,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-
-      <footer className="border-t border-border/50 bg-card mt-12">
-        <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Icon name="Crosshair" className="text-primary" size={28} />
-                <span className="text-xl font-bold">unmatched.gg</span>
-              </div>
-              <p className="text-sm text-muted-foreground">The way CS was meant to be played</p>
-              <p className="text-xs text-muted-foreground mt-2">© 2024 unmatched.gg</p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-3">Quick Links</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Home</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Play</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Rankings</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-3">Legal</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Legal Notice</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
